@@ -27,7 +27,7 @@ if (process.env.MONGO_URI) {
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || "");
 
 // Active supported Official Gemini Models prioritized for ultra-low latency & responsiveness
-const FAST_MODELS = ["gemini-1.5-flash", "gemini-1.5-pro"];
+const FAST_MODELS = ["gemini-2.0-flash", "gemini-1.5-flash"];
 
 // Helper to detect language script
 function detectLanguage(text) {
@@ -102,7 +102,7 @@ async function tryGenerateNativeVoice(text, emotion = "warm and friendly") {
     const key = process.env.GEMINI_API_KEY;
     if (!key) return null;
 
-    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${key}`;
+    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${key}`;
     const ttsPrompt = `Speak naturally with a ${emotion} conversational human tone:${text}`;
 
     const controller = new AbortController();
